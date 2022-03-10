@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_10_124052) do
+ActiveRecord::Schema.define(version: 2022_03_10_133534) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "profile_id", null: false
@@ -47,6 +47,15 @@ ActiveRecord::Schema.define(version: 2022_03_10_124052) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "profiles_profiles", force: :cascade do |t|
+    t.integer "this_profile_id"
+    t.integer "other_profile_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["other_profile_id"], name: "index_profiles_profiles_on_other_profile_id"
+    t.index ["this_profile_id"], name: "index_profiles_profiles_on_this_profile_id"
   end
 
   create_table "users", force: :cascade do |t|
