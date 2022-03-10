@@ -10,4 +10,6 @@ class Profile < ApplicationRecord
                           class_name: 'Profile',
                           foreign_key: 'this_profile_id',
                           association_foreign_key: 'other_profile_id'
+  has_many :requests, class_name: 'FriendshipRequest', foreign_key: :inviter
+  has_many :invites, class_name: 'FriendshipRequest', foreign_key: :invitee
 end
