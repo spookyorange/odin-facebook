@@ -1,24 +1,13 @@
-# README
+ruby version
+2.7.4
+rails version
+6.1.4.7
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+------------
+Project from the The Odin Project
+------------
+https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-on-rails/lessons/rails-final-project
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+-------------
+Objective is to make a Facebook back-end core clone
+-------------
