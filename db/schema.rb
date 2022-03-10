@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_10_123437) do
+ActiveRecord::Schema.define(version: 2022_03_10_124052) do
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "profile_id", null: false
+    t.integer "post_id", null: false
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["profile_id"], name: "index_comments_on_profile_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "profile_like_id"
+    t.integer "liked_post_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["liked_post_id"], name: "index_likes_on_liked_post_id"
+    t.index ["profile_like_id"], name: "index_likes_on_profile_like_id"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
@@ -42,6 +61,8 @@ ActiveRecord::Schema.define(version: 2022_03_10_123437) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "profiles"
   add_foreign_key "posts", "profiles"
   add_foreign_key "profiles", "users"
 end
