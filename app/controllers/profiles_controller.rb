@@ -15,7 +15,7 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    @profile = Profile.new(profile_creation_params)
+    @profile = Profile.new(profile_params)
     current_user.profile = @profile
 
     if @profile.save
@@ -41,7 +41,7 @@ class ProfilesController < ApplicationController
   def update
     @profile = Profile.find(params[:id])
     if current_user.profile.id == params[:id].to_i
-      @profile.update(profile_creation_params)
+      @profile.update(profile_params)
       redirect_to @profile
     else
       flash[:notice] = 'Something went wrong'
@@ -51,7 +51,7 @@ class ProfilesController < ApplicationController
 
   private
 
-  def profile_creation_params
+  def profile_params
     params.require(:profile).permit(:username, :age)
   end
 end
