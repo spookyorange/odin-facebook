@@ -1,1 +1,10 @@
-<h1>Welcome</h1>
+<h1>Hey there, <%= current_user.profile.username %></h1>
+<h2><%= link_to 'Create a new post', new_post_path  %></h2>
+
+<% @posts.each do |post| %>
+  <div style="border: 1px black solid">
+    <h2><%= post.profile.username %></h2>
+    <h1><%= post.title  %></h1>
+    <h3><%= post.content %></h3>
+  </div>
+<% end %>
