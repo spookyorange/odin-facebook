@@ -19,7 +19,7 @@ class ProfilesController < ApplicationController
     current_user.profile = @profile
 
     if @profile.save
-      redirect_to :root
+      redirect_to @profile
     else
       render :new
     end
