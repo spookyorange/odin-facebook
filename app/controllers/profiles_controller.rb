@@ -1,19 +1,25 @@
 class ProfilesController < ApplicationController
+  skip_before_action :profile_control, only: [:new, :create]
+
   def index
     @profiles = Profile.all
   end
 
   def new
-    @profile = Profile.new
+    if current_user.profile.nil?
+      @profile = Profile.new
+    else
+      flash[:notice] = 'you already have a profile'
+      redirect_to current_user.profile
+    end
   end
 
   def create
-    @user = current_user
     @profile = Profile.new(profile_creation_params)
+    current_user.profile = @profile
 
     if @profile.save
-      @user.profile = @profile
-      redirect_to 'root'
+      redirect_to :root
     else
       render :new
     end
@@ -24,7 +30,7 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    if current_user.profile.id == params[id]
+    if current_user.profile.id == params[:id].to_i
       @profile = Profile.find(params[:id])
     else
       flash[:alert] = 'You can only edit your own profile'
@@ -33,9 +39,10 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    @profile = Profile.find[params[:id]]
-    if current_user.profile.id == params[:id]
+    @profile = Profile.find(params[:id])
+    if current_user.profile.id == params[:id].to_i
       @profile.update(profile_creation_params)
+      redirect_to @profile
     else
       flash[:notice] = 'Something went wrong'
       redirect_to current_user.profile

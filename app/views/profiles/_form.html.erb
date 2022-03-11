@@ -1,0 +1,9 @@
+<%= form_with model: profile do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+  <br><br>
+  <%= f.label :age %>
+  <%= f.number_field :age %>
+  <br><br>
+  <%= f.submit %>
+<% end %>

@@ -1,0 +1,12 @@
+<h1>This is <span style="color: red"><%= @profile.username %>'s</span> profile</h1>
+<br><br><br>
+<h2>Username: <%= @profile.username %></h2>
+<br>
+<h2>Age: <%= @profile.age %></h2>
+<br><br>
+
+<% if current_user.profile != @profile %>
+  <h3>Send friend request!</h3>
+<% else %>
+  <h3><%= link_to 'edit your profile', edit_profile_path %></h3>
+<% end %>

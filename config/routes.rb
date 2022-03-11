@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'posts#index'
 
-  resources :profiles do
+  resources :profiles, except: :destroy do
     resources :comments
   end
 
