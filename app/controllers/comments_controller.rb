@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.new(comment_params)
     @comment.profile = current_user.profile
+    @comment.username = @comment.profile.username
     @comment.save
     redirect_to @post
   end
