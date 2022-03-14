@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   end
 
   resources :profiles, except: :destroy do
-    resources :likes
+    resources :likes, only: [:index, :create, :destroy]
   end
+
+  resources :friendship_requests, only: [:index, :create, :destroy]
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
