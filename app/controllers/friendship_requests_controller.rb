@@ -2,7 +2,6 @@ class FriendshipRequestsController < ApplicationController
   def index
     @requests = current_user.profile.requests
     @invites = current_user.profile.invites
-
   end
 
   def create
