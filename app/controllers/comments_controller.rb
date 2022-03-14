@@ -8,6 +8,11 @@ class CommentsController < ApplicationController
     redirect_to @post
   end
 
+  def edit
+    @post = Post.find(params[:post_id])
+    @comment = Comment.find(params[:id])
+  end
+
   def update
     @comment = Comment.find(params[:id])
     @post = @comment.post
@@ -20,8 +25,8 @@ class CommentsController < ApplicationController
         flash[:notice] = 'comment edited successfully'
         redirect_to @post
       else
-        flash[:notice] = 'something went wrong'
-        redirect_to @post
+        flash.now[:notice] = 'something went wrong'
+        render :edit
       end
     end
 

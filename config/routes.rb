@@ -3,10 +3,11 @@ Rails.application.routes.draw do
   root 'posts#index'
 
   resources :posts do
-    resources :comments, except: [:index, :show]
+    resources :comments, only: [:create, :edit, :update, :destroy]
   end
 
-  resources :profiles, except: :destroy
-  resources :likes
+  resources :profiles, except: :destroy do
+    resources :likes
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

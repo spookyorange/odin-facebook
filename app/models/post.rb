@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :profile
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
-  has_many :likes, foreign_key: 'liked_post_id'
-  has_many :profile_likes, through: :likes
+  has_many :likes, foreign_key: 'liked_post_id', dependent: :destroy
+  has_many :profile_likes, through: :likes, dependent: :destroy
 end
