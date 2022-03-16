@@ -5,7 +5,7 @@ class LikesController < ApplicationController
     if @profile.liked_posts.exclude?(Post.find(@like.liked_post_id))
       @like.profile_like = @profile
       if @like.save
-        flash[:notice] = 'you have successfully liked this post'
+        flash[:notice] = 'you have successfully liked that post'
         redirect_to posts_path
       else
         flash[:notice] = 'something went horribly wrong'
