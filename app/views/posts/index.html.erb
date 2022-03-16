@@ -7,7 +7,7 @@
     <h1><%= post.title  %></h1>
     <h3><%= post.content %></h3>
     <% if current_user.profile.liked_posts.exclude?(post) %>
-      <%= render 'likes/new', like: Like.new, post: post %>
+      <%= render 'likes/form', like: Like.new, post: post %>
     <% end %>
   </div>
 <% end %>
