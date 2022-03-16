@@ -2,6 +2,28 @@ class ProfilesController < ApplicationController
   skip_before_action :profile_control, only: [:new, :create]
 
   def index
+    @reserved = Array.new
+    @requested_profiles = Array.new
+    current_user.profile.requests.each do |req|
+      @requested_profiles << req.invitee
+      @reserved << req.invitee
+    end
+
+    @invited_profiles = Array.new
+
+    current_user.profile.invites.each do |inv|
+      @invited_profiles << inv.inviter
+      @reserved << inv.inviter
+    end
+
+    @reserved << current_user.profile
+
+    current_user.profile.friends.each do |fr|
+      if @reserved.exclude?(fr)
+        @reserved << fr
+      end
+    end
+
     @profiles = Profile.all
   end
 
@@ -27,6 +49,13 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = Profile.find(params[:id])
+    @requestable = false
+    @existing = FriendshipRequest.where("invitee_id = ? AND inviter_id = ?", current_user.profile.id, @profile.id)
+    @existing2 = FriendshipRequest.where("inviter_id = ? AND invitee_id = ?", @current_user.profile.id, @profile.id)
+
+    if current_user.profile.friends.exclude?(@profile) && (@existing.empty? && @existing2.empty?)
+      @requestable = true
+    end
   end
 
   def edit
@@ -47,6 +76,10 @@ class ProfilesController < ApplicationController
       flash[:notice] = 'Something went wrong'
       redirect_to current_user.profile
     end
+  end
+
+  def friends
+    @friends = Profile.find(params[:id]).friends
   end
 
   private

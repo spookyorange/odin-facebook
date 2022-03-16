@@ -3,10 +3,14 @@
 <h2>Username: <%= @profile.username %></h2>
 <br>
 <h2>Age: <%= @profile.age %></h2>
+<br>
+<h2><%= link_to 'Friends', "./#{@profile.id}/friends" %></h2>
 <br><br>
 
 <% if current_user.profile != @profile %>
-  <h3>Send friend request!</h3>
+  <% if @requestable %>
+    <h3><%= render 'friendship_requests/form', profile: @profile %></h3>
+  <% end %>
 <% else %>
   <h3><%= link_to 'edit your profile', edit_profile_path %></h3>
 <% end %>
