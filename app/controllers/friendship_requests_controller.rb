@@ -11,7 +11,7 @@ class FriendshipRequestsController < ApplicationController
     @excluded << current_user.profile.friends
     @excluded << current_user.profile
     @existing = FriendshipRequest.where("invitee_id = ? AND inviter_id = ?", @freq[:invitee_id], @freq[:inviter_id])
-    @existing2 =FriendshipRequest.where("inviter_id = ? AND invitee_id = ?", @freq[:invitee_id], @freq[:inviter_id])
+    @existing2 = FriendshipRequest.where("inviter_id = ? AND invitee_id = ?", @freq[:invitee_id], @freq[:inviter_id])
 
     if @existing.empty? && @existing2.empty? && @excluded.exclude?(@freq.invitee) && @freq.save
       flash[:notice] = 'friendship request sent successfully'
