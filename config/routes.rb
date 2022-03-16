@@ -6,9 +6,12 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :edit, :update, :destroy]
   end
 
-  resources :profiles, except: :destroy do
-    resources :likes, only: [:index, :create, :destroy]
-  end
+  get 'profiles/:id/friends', to: 'profiles#friends'
+
+  resources :profiles, except: :destroy
+
+  resources :likes, only: [:index, :create, :destroy]
+
 
   resources :friendship_requests, only: [:index, :create, :destroy]
 
