@@ -40,7 +40,6 @@ group :development do
   gem 'letter_opener', '~> 1.8'
 end
 gem 'figaro', '~> 1.2'
-gem 'gravatar_image_tag', '~> 1.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
