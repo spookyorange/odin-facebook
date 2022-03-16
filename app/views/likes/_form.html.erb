@@ -1,5 +1,5 @@
 <% if current_user.profile.liked_posts.exclude?(post) %>
-  <%= form_with model: Like.new do |f| %>
+  <%= form_with model: like do |f| %>
     <%= f.hidden_field :liked_post_id, value: post.id  %>
     <%= f.submit 'like' %>
   <% end %>
