@@ -12,4 +12,8 @@ class Profile < ApplicationRecord
                           association_foreign_key: 'other_profile_id'
   has_many :requests, class_name: 'FriendshipRequest', foreign_key: :inviter
   has_many :invites, class_name: 'FriendshipRequest', foreign_key: :invitee
+  validates :username, presence: true,
+            length: {minimum: 4}
+  validates :age, presence: true,
+            numericality: {greater_than: 13}
 end

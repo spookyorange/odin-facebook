@@ -3,5 +3,6 @@ class Comment < ApplicationRecord
   belongs_to :post
 
   validates :username, presence: true
-  validates :content, presence: true
+  validates :content, presence: true,
+            length: {minimum: 4}
 end

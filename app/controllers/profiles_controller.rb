@@ -70,8 +70,12 @@ class ProfilesController < ApplicationController
   def update
     @profile = Profile.find(params[:id])
     if current_user.profile.id == params[:id].to_i
-      @profile.update(profile_params)
-      redirect_to @profile
+      if @profile.update(profile_params)
+        redirect_to @profile
+      else
+        flash.now[:notice] = 'Something went wrong'
+        render :edit
+      end
     else
       flash[:notice] = 'Something went wrong'
       redirect_to current_user.profile
