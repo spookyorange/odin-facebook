@@ -1,0 +1,4 @@
+<%= form_with model: FriendshipRequest.new do |f| %>
+  <%= f.hidden_field :invitee_id, value: profile.id %>
+  <%= f.submit %>
+<% end %>
