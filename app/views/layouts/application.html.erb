@@ -13,9 +13,14 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <% if user_signed_in? %>
-      <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+    <div>
+      <% if user_signed_in? %>
+        <%= link_to 'My Profile', profile_path(current_user.profile) %>
+        <%= link_to 'Find Your Friends', profiles_path %>
+        <%= link_to 'Posts', posts_path %>
+        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
     <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
