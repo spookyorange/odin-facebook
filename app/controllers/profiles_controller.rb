@@ -82,6 +82,11 @@ class ProfilesController < ApplicationController
     @friends = Profile.find(params[:id]).friends
   end
 
+  def liked_posts
+    @profile = Profile.find(params[:id])
+    @likes = @profile.likes
+  end
+
   private
 
   def profile_params

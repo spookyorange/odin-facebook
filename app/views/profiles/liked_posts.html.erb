@@ -1,0 +1,8 @@
+<h1>Liked Posts</h1>
+
+<% @likes.each do |like| %>
+  <%= link_to "#{like.liked_post.title}", like.liked_post %>
+  <br><br>
+  <%= link_to 'un-like', like_path(like), method: :delete %>
+  <br><br>
+<% end %>

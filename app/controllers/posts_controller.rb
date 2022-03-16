@@ -62,6 +62,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def liked_by
+    @post = Post.find(params[:id])
+    @likes = @post.likes
+  end
+
   private
 
   def post_params

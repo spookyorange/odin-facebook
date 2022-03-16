@@ -21,7 +21,7 @@ class LikesController < ApplicationController
     @like = Like.find(params[:id])
     @like.destroy
     flash[:notice] = 'you no longer like this post'
-    redirect_to posts_path
+    redirect_to liked_posts_path(current_user.profile.id)
   end
 
   private

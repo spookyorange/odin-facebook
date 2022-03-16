@@ -1,11 +1,4 @@
-<% if current_user.profile.liked_posts.exclude?(post) %>
-  <%= form_with model: like do |f| %>
-    <%= f.hidden_field :liked_post_id, value: post.id  %>
-    <%= f.submit 'like' %>
-  <% end %>
-<% else %>
-  <%= form_with model: like, method: :delete do |f| %>
-    <%= f.submit 'un-like' %>
-  <% end %>
+<%= form_with model: like do |f| %>
+  <%= f.hidden_field :liked_post_id, value: post.id  %>
+  <%= f.submit 'like' %>
 <% end %>
-<br>

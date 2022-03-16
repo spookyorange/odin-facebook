@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   end
 
   get 'profiles/:id/friends', to: 'profiles#friends'
-  get 'profiles/:id/liked_posts', to: 'profiles#liked_posts'
-  get 'posts/:id/liked_by', to: 'posts#liked_by'
+  get 'profiles/:id/liked_posts', to: 'profiles#liked_posts', as: :liked_posts
+  get 'posts/:id/liked_by', to: 'posts#liked_by', as: :liked_by
 
   resources :profiles, except: :destroy
 
