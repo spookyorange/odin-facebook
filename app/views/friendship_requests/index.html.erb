@@ -1,0 +1,24 @@
+<h1>Friendship Requests</h1>
+<h2>The people who wish to be friend of yours</h2>
+<% @invites && @invites.each do |invite| %>
+  <h3>inviter = <%= invite.inviter.username %></h3>
+  <%= form_with model: invite, method: :delete do |f| %>
+    <%= f.hidden_field :accept, value: 1 %>
+    <%= f.submit 'accept' %>
+  <% end %>
+  <%= form_with model: invite, method: :delete do |f| %>
+    <%= f.hidden_field :accept, value: 0 %>
+    <%= f.submit 'decline' %>
+  <% end %>
+
+<% end %>
+
+<h2>The people who you requested to be friends with</h2>
+<% @requests && @requests.each do |request| %>
+  <h3>username = <%= request.invitee.username %></h3>
+  <%= form_with model: request, method: :delete do |f| %>
+    <%= f.hidden_field :accept, value: 0 %>
+    <%= f.submit 'cancel' %>
+  <% end %>
+<% end %>
+
