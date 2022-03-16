@@ -3,7 +3,8 @@
 
 <% @posts.each do |post| %>
   <div style="border: 1px black solid">
-    <h2><%= link_to "#{post.profile.username}", post.profile %></h2>
+    <h2><%= gravatar_image_tag(post.profile.user.email, :alt => "#{post.profile.username}") %>
+    <%= link_to "#{post.profile.username}", post.profile %></h2>
     <h1><%= link_to "#{post.title}", post  %></h1>
     <h3><%= post.content %></h3>
     <% if current_user.profile.liked_posts.exclude?(post) %>

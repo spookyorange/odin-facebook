@@ -1,7 +1,9 @@
 <h1><%= @post.title %></h1>
 <h3><%= @post.content %></h3>
-<h5><%= link_to "#{@post.likes.size} likes", liked_by_path(@post) %></h5>
-<% if current_user.profile.liked_posts.exclude?(@post) %>
+<h4><%= gravatar_image_tag(@post.profile.user.email, :alt => "#{@post.profile.username}") %>
+<%= link_to "#{@post.profile.username}", @post.profile %></h4>
+<h5><%= link_to "#{@post.likes.size} likes", liked_by_path(@post) %>
+<% if current_user.profile.liked_posts.exclude?(@post) %></h5>
   <h5><%= render "likes/form", like: Like.new, post: @post %></h5>
 <% else %>
   <h5>You have liked this post</h5>

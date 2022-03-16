@@ -1,4 +1,5 @@
-<h4><%= link_to "#{comment.username}", comment.profile %>: <%= comment.content %></h4>
+<h4><%= gravatar_image_tag(comment.profile.user.email, :alt => "#{comment.profile.username}") %>
+<%= link_to "#{comment.username}", comment.profile %>: <%= comment.content %></h4>
 <% if current_user.profile == comment.profile %>
   <h5><%= link_to 'edit', edit_post_comment_path(@post, comment) %>
   <%= link_to 'delete', post_comment_path(@post, comment),

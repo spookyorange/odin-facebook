@@ -1,4 +1,4 @@
 <h1>Friends</h1>
 <% @friends && @friends.each do |friend| %>
-  <%= link_to "#{friend.username}", friend %>
+  <%= gravatar_image_tag(friend.user.email, :alt => "#{friend.username}") %><%= link_to "#{friend.username}", friend %>
 <% end %>

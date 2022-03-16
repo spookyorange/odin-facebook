@@ -2,7 +2,9 @@
 
 <% @profiles.each do |profile| %>
   <% if current_user.profile != profile %>
-    <h3>Username: <%= profile.username %></h3>
+    <h3>
+        <%= gravatar_image_tag(profile.user.email, :alt => "#{profile.username}") %>
+        Username: <%= profile.username %></h3>
     <h4>Age: <%= profile.age %></h4>
     <% if @reserved.exclude?(profile) %>
       <%= render 'friendship_requests/form', profile: profile %>

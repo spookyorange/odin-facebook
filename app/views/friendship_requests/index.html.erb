@@ -1,7 +1,8 @@
 <h1>Friendship Requests</h1>
 <h2>The people who wish to be friend of yours</h2>
 <% @invites && @invites.each do |invite| %>
-  <h3>inviter = <%= invite.inviter.username %></h3>
+  <h3><%= gravatar_image_tag(invite.inviter.user.email, :alt => "#{invite.inviter.username}") %>
+  <%= link_to "#{invite.inviter.username}", invite.inviter %></h3>
   <%= form_with model: invite, method: :delete do |f| %>
     <%= f.hidden_field :accept, value: 1 %>
     <%= f.submit 'accept' %>
@@ -15,7 +16,8 @@
 
 <h2>The people who you requested to be friends with</h2>
 <% @requests && @requests.each do |request| %>
-  <h3>username = <%= request.invitee.username %></h3>
+  <h3><%= gravatar_image_tag(request.invitee.user.email, :alt => "#{request.invitee.username}") %>
+  <%= link_to "#{request.invitee.username}", request.invitee %></h3>
   <%= form_with model: request, method: :delete do |f| %>
     <%= f.hidden_field :accept, value: 0 %>
     <%= f.submit 'cancel' %>
