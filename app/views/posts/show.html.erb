@@ -1,6 +1,11 @@
 <h1><%= @post.title %></h1>
 <h3><%= @post.content %></h3>
-<br><br><br>
+<h5><%= link_to "#{@post.likes.size} likes", liked_by_path(@post) %></h5>
+<% if current_user.profile.liked_posts.exclude?(@post) %>
+  <h5><%= render "likes/form", like: Like.new, post: @post %></h5>
+<% else %>
+  <h5>You have liked this post</h5>
+<% end %>
 
 <% if current_user.profile == @post.profile %>
   <p><%= link_to 'edit this post', edit_post_path %></p>

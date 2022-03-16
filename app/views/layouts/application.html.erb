@@ -18,8 +18,9 @@
         <%= link_to 'My Profile', profile_path(current_user.profile) %>
         <%= link_to 'Find Your Friends', profiles_path %>
         <%= link_to 'Posts', posts_path %>
-        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
-    <% end %>
+        <%= link_to 'Friendship Requests', friendship_requests_path %>
+        <span style="float:right"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></span>
+      <% end %>
     </div>
     <%= yield %>
   </body>

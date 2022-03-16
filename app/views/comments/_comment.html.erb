@@ -1,8 +1,7 @@
-<h3>username: <%= comment.username %></h3>
-<p>comment: <%= comment.content %></p>
+<h4><%= link_to "#{comment.username}", comment.profile %>: <%= comment.content %></h4>
 <% if current_user.profile == comment.profile %>
-  <h5><%= link_to 'edit', edit_post_comment_path(@post, comment) %></h5>
-  <h5><%= link_to 'delete', post_comment_path(@post, comment),
+  <h5><%= link_to 'edit', edit_post_comment_path(@post, comment) %>
+  <%= link_to 'delete', post_comment_path(@post, comment),
                   method: :delete,
                   data: {confirm: 'are you sure?'} %></h5>
 <% end %>

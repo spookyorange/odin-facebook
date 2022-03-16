@@ -1,3 +1,4 @@
+<h1>Friends</h1>
 <% @friends && @friends.each do |friend| %>
-  <%= friend.username %>
+  <%= link_to "#{friend.username}", friend %>
 <% end %>

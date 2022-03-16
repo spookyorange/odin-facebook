@@ -5,6 +5,7 @@
 <h2>Age: <%= @profile.age %></h2>
 <br>
 <h2><%= link_to 'Friends', "./#{@profile.id}/friends" %></h2>
+<h2><%= link_to 'Liked Posts', liked_posts_path(@profile) %></h2>
 <br><br>
 
 <% if current_user.profile != @profile %>

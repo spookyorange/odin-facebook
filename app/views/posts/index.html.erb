@@ -3,11 +3,13 @@
 
 <% @posts.each do |post| %>
   <div style="border: 1px black solid">
-    <h2><%= post.profile.username %></h2>
-    <h1><%= post.title  %></h1>
+    <h2><%= link_to "#{post.profile.username}", post.profile %></h2>
+    <h1><%= link_to "#{post.title}", post  %></h1>
     <h3><%= post.content %></h3>
     <% if current_user.profile.liked_posts.exclude?(post) %>
       <%= render 'likes/form', like: Like.new, post: post %>
+    <% else %>
+      <h5>You have liked this post</h5>
     <% end %>
   </div>
 <% end %>
