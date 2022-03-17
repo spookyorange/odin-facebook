@@ -1,5 +1,4 @@
 class ProfileMailer < ApplicationMailer
-  default from: 'notifications@haha.com'
 
   def welcome_email
     @profile = params[:profile]
