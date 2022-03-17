@@ -123,7 +123,7 @@ Rails.application.configure do
     :address        => ENV['MAILGUN_SMTP_SERVER'],
     :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
     :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-    :domain         => 'https://frozen-crag-90292.herokuapp.com.heroku.com',
+    :domain         => 'https://frozen-crag-90292.herokuapp.com',
     :authentication => :plain
   }
 end
