@@ -1,5 +1,4 @@
 
-<%= link_to 'Sign in with facebook', user_facebook_omniauth_authorize_path, method: :post %>
 <%- if controller_name != 'sessions' %>
   <%= link_to "Log in", new_session_path(resource_name) %><br />
 <% end %>
