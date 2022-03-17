@@ -41,7 +41,7 @@ class ProfilesController < ApplicationController
     current_user.profile = @profile
 
     if @profile.save
-      ProfileMailer.with(profile: @profile).welcome_email.deliver_later
+      ProfileMailer.with(profile: @profile).welcome_email
       redirect_to @profile
     else
       render :new
