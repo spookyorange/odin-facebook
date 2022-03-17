@@ -1,4 +1,5 @@
 class ProfileMailer < ApplicationMailer
+  default from: 'orange@frozen-crag-90292.herokuapp.com'
 
   def welcome_email
     @profile = params[:profile]

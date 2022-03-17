@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: ENV['MAILGUN_DOMAIN']
+  default from: 'orange@frozen-crag-90292.herokuapp.com'
   layout 'mailer'
 end
