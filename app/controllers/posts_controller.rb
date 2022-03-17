@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Array.new
+    Post.where(profile: current_user.profile.friends).order(:created_at)
   end
 
   def show
