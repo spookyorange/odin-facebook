@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   def index
     @posts = Array.new
-    Post.where(profile_id: current_user.profile.friends).or(Post.where(profile_id: current_user.profile)).order(:created_at).each do |post|
+    Post.where(profile_id: current_user.profile.friends).or(Post.where(profile_id: current_user.profile)).order(created_at: :desc).each do |post|
       @posts << post
     end
   end
